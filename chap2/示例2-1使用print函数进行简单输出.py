@@ -1,0 +1,9 @@
+a=100
+b=50
+print(90)
+print(a)
+print(a*b)
+print('我的第一行Python代码')
+print("我是李常卿")
+print('''我是Lcq''')
+print("""我是李常卿""")
