@@ -1,5 +1,6 @@
 import requests # pip install requests 模块导入未使用灰色待机状态
 import pandas as pd # pip install pandas
+# https://haokan.baidu.com/tab/dongman_new?sfrom=yule_new
 # 发送请求的网址
 url = 'https://haokan.baidu.com/haokan/ui-web/video/rec?tab=dongman_new&act=pcFeed&pd=pc&num=20&shuaxin_id=17070419980000&hk_nonce=27efc995ed339aeea3d2f14c7f2b7d31&hk_timestamp=1707041998&hk_sign=303c09b5c4bf456bef0b076328fc173f&hk_token=DBd8dAVwdwNyDnUDdXt%2FARkdAQA'
 # headers 请求头 伪装python代码 模拟成浏览器去发送请求，为了防止被反爬
