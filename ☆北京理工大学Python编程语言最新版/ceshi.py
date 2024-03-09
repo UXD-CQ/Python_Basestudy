@@ -1,21 +1,48 @@
-# 一年内的总天数
-total_days = 365
-
-# 计算一年内的进步
-progress = 0
-for day in range(1, total_days + 1):
-    if day % 3 == 0:  # 每三天进步百分之一
-        progress += 0.02
-
-# 计算一年内的退步
-regress = 0
-for day in range(1, total_days + 1):
-    if day % 2 == 0:  # 每两天退步千分之五
-        regress += 0.005
-
-# 计算一年内的净进步
-net_progress = progress - regress
-
-print("一年内的进步：", round(progress, 3))
-print("一年内的退步：", round(regress, 3))
-print("一年内的净进步：", round(net_progress, 3))
+import turtle
+import time
+def drawGap(): # 绘制数码管间隔
+    turtle.penup()
+    turtle.fd(5)
+def drawLine(draw): # 复制单段数码管
+    drawGap()
+    turtle.pendown() if draw else turtle.penup()
+    turtle.fd(40)
+    drawGap()
+    turtle.right(90)
+def drawDigit(d): # 根据数字绘制七段数码管
+    drawLine(True) if d in [2,3,4,5,6,8,9] else drawLine(False)
+    drawLine(True) if d in [0,1,3,4,5,6,7,8,9] else drawLine(False)
+    drawLine(True) if d in [0,2,3,5,6,8,9] else drawLine(False)
+    drawLine(True) if d in [0,2,6,8] else drawLine(False)
+    turtle.left(90)
+    drawLine(True) if d in [0,4,5,6,8,9] else drawLine(False)
+    drawLine(True) if d in [0,2,3,4,5,6,7,8,9] else drawLine(False)
+    drawLine(True) if d in [0,1,2,3,4,7,8,9] else drawLine(False)
+    turtle.left(180)
+    turtle.penup()
+    turtle.fd(20)
+def drawDate(date):
+    turtle.pencolor('red')
+    for i in date:
+        if i == '-':
+            turtle.write('年',font = ("Arial",18,"normal"))
+            turtle.pencolor('green')
+            turtle.fd(40)
+        elif i == '=':
+            turtle.write('月',font = ("Arial",18,"normal"))
+            turtle.pencolor('blue')
+            turtle.fd(40)
+        elif i == '+':
+            turtle.write('日',font = ("Arial",18,"normal"))
+        else:
+            drawDigit(eval(i))
+def main():
+    turtle.setup(800,350,200,200)
+    turtle.penup()
+    turtle.fd(-350)
+    turtle.pensize(5)
+    # drawDate(time.strftime('%Y-%m=%d+',time.gmtime()))
+    drawDate('2022-11=28+')
+    turtle.hideturtle()
+    turtle.done()
+main()
